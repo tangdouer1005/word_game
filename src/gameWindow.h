@@ -18,7 +18,7 @@ class word_game;
 #define SHOWTIME 2
 #define ANSWERTIME 4
 #define RESULTTIME 2
-#define ROUND 5
+#define ROUND 9
 enum Status
 {
     UNSTART,
@@ -48,9 +48,9 @@ private:
     Status preStatus;
     int level;
 
-    QList<QString> wordList;
     QString curString;
-
+    QList<QString> wordList;
+    std::vector<QList<QString>> wordLists;
     class word_game *father;
 private slots:
     void slotConfirmButtonClick();

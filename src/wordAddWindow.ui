@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>360</width>
+    <width>352</width>
     <height>294</height>
    </rect>
   </property>
@@ -17,9 +17,9 @@
    <widget class="QLineEdit" name="wordLine">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>90</x>
       <y>50</y>
-      <width>301</width>
+      <width>251</width>
       <height>41</height>
      </rect>
     </property>
@@ -37,13 +37,38 @@
      <string>确认添加</string>
     </property>
    </widget>
+   <widget class="QComboBox" name="levelBox">
+    <property name="geometry">
+     <rect>
+      <x>12</x>
+      <y>50</y>
+      <width>81</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>level 1</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>level 2</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>level 3</string>
+     </property>
+    </item>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>360</width>
+     <width>352</width>
      <height>23</height>
     </rect>
    </property>

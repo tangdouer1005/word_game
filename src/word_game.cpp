@@ -12,12 +12,6 @@ word_game::word_game(QWidget *parent)
     mWordAddWindow = new wordAddWindow(this);
     mLoginWindow->show();
 
-    // ui->showInformation->append("iter");
-    // for (auto iter : wordLists[0])
-    // {
-    //     ui->showInformation->append(iter);
-    // }
-
     connect(mLoginWindow, SIGNAL(loginSignal()), this, SLOT(show()));
     connect(mGameWindow, SIGNAL(gameOverSignal()), this, SLOT(slotTest()));
     connect(ui->showListButton, SIGNAL(clicked()), mlistWindow, SLOT(flushList()));
@@ -209,27 +203,10 @@ void word_game::slotPlayButtonClick()
 {
     if (me == CHALLENGER)
     {
-        if (ui->levelBox->currentText() == QString("level 1"))
-        {
-            mGameWindow->selectLevel(1);
-        }
-        else if (ui->levelBox->currentText() == QString("level 2"))
-        {
-            mGameWindow->selectLevel(2);
-        }
-        else if (ui->levelBox->currentText() == QString("level 3"))
-        {
-            mGameWindow->selectLevel(3);
-        }
-        else
-        {
-            // wrong
-        }
         mGameWindow->show();
     }
     else
     {
-
         mWordAddWindow->show();
     }
 }

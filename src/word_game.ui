@@ -43,40 +43,15 @@
    <widget class="QPushButton" name="playButton">
     <property name="geometry">
      <rect>
-      <x>370</x>
+      <x>310</x>
       <y>220</y>
-      <width>111</width>
+      <width>151</width>
       <height>51</height>
      </rect>
     </property>
     <property name="text">
      <string>开始</string>
     </property>
-   </widget>
-   <widget class="QComboBox" name="levelBox">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>220</y>
-      <width>81</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <item>
-     <property name="text">
-      <string>level 1</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>level 2</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>level 3</string>
-     </property>
-    </item>
    </widget>
    <widget class="QLineEdit" name="searchLine">
     <property name="geometry">
@@ -134,7 +109,7 @@
      <x>0</x>
      <y>0</y>
      <width>532</width>
-     <height>26</height>
+     <height>23</height>
     </rect>
    </property>
   </widget>

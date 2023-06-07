@@ -43,9 +43,17 @@ void wordAddWindow::slotConfirmButtonClick()
         return;
     }
 
-    if (father->ui->levelBox->currentText() == QString("level 1"))
+    if (ui->levelBox->currentText() == QString("level 1"))
     {
-
+        if (tmp.length() > 4)
+        {
+            QMessageBox::information(this,
+                                     tr("添加的单词不属于此等级"),
+                                     tr("level 1单词长度在1~4"),
+                                     QMessageBox::Ok | QMessageBox::Cancel,
+                                     QMessageBox::Ok);
+            return;
+        }
         (father->wordLists.at(0)).insert(tmp);
         QMessageBox::information(this,
                                  tr("成功"),
@@ -56,8 +64,17 @@ void wordAddWindow::slotConfirmButtonClick()
         father->printfQuizmaster();
         return;
     }
-    else if (father->ui->levelBox->currentText() == QString("level 2"))
+    else if (ui->levelBox->currentText() == QString("level 2"))
     {
+        if (tmp.length() > 8 || tmp.length() < 5)
+        {
+            QMessageBox::information(this,
+                                     tr("添加的单词不属于此等级"),
+                                     tr("level 2单词长度在5~8"),
+                                     QMessageBox::Ok | QMessageBox::Cancel,
+                                     QMessageBox::Ok);
+            return;
+        }
         (father->wordLists.at(1)).insert(tmp);
         QMessageBox::information(this,
                                  tr("成功"),
@@ -69,8 +86,17 @@ void wordAddWindow::slotConfirmButtonClick()
 
         return;
     }
-    else if (father->ui->levelBox->currentText() == QString("level 3"))
+    else if (ui->levelBox->currentText() == QString("level 3"))
     {
+        if (tmp.length() < 9)
+        {
+            QMessageBox::information(this,
+                                     tr("添加的单词不属于此等级"),
+                                     tr("level 3单词不小于9"),
+                                     QMessageBox::Ok | QMessageBox::Cancel,
+                                     QMessageBox::Ok);
+            return;
+        }
         (father->wordLists.at(2)).insert(tmp);
         QMessageBox::information(this,
                                  tr("成功"),

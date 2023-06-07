@@ -66,6 +66,19 @@
      <string>确认</string>
     </property>
    </widget>
+   <widget class="QLabel" name="show_level">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>30</y>
+      <width>191</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>当前闯关等级</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

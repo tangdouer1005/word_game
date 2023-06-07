@@ -57,7 +57,6 @@ private:
     {
         ui->showInformation->clear();
         ui->showInformation->append(cInformation->getid());
-        // ui->showInformation->append(cInformation->getpassword());
         ui->showInformation->append(QString::number(cInformation->getExperience()));
         ui->showInformation->append(QString::number(cInformation->getLevel()));
         ui->showInformation->append(QString::number(cInformation->getPassedLevels()));
@@ -67,7 +66,6 @@ private:
     {
         ui->showInformation->clear();
         ui->showInformation->append(qInformation->getid());
-        // ui->showInformation->append(qInformation->getpassword());
         ui->showInformation->append(QString::number(qInformation->getLevel()));
         ui->showInformation->append(QString::number(qInformation->getqusetionsCounts()));
         ui->showInformation->append("");
@@ -75,7 +73,6 @@ private:
     void init();
 private slots:
     void slotPlayButtonClick();
-    // void slotRankButtonClick();
     void slotTest();
     void slotSearch();
 };

@@ -23,32 +23,22 @@ gameWindow::~gameWindow()
 }
 void gameWindow::slotStartButtonClick()
 {
-    if (father->wordLists[level - 1].size() <= 5)
+    wordLists = {father->wordLists[0].toList(), father->wordLists[1].toList(), father->wordLists[2].toList()};
+    for (int i = 0; i < 3; i++)
     {
-        QMessageBox::information(this,
-                                 tr("该词库单词太少"),
-                                 tr("请增加词库数量后再开始"),
-                                 QMessageBox::Ok | QMessageBox::Cancel,
-                                 QMessageBox::Ok);
-        return;
+        if (wordLists[i].size() < 5)
+        {
+            QMessageBox::information(this,
+                                     tr("词库单词太少"),
+                                     tr("请增加词库数量后再开始"),
+                                     QMessageBox::Ok | QMessageBox::Cancel,
+                                     QMessageBox::Ok);
+            return;
+        }
     }
-    if (father->ui->levelBox->currentText() == QString("level 1"))
-    {
-        level = 1;
-    }
-    else if (father->ui->levelBox->currentText() == QString("level 2"))
-    {
-        level = 2;
-    }
-    else if (father->ui->levelBox->currentText() == QString("level 3"))
-    {
-        level = 3;
-    }
-    else
-    {
-        // wrong
-    }
-    wordList = father->wordLists[level - 1].toList();
+    ui->show_level->setText("level 1");
+
+    wordList = wordLists[0];
     ui->answerLine->setReadOnly(true);
     if (ui->startButton->text() == QString("开始"))
     {
@@ -60,14 +50,13 @@ void gameWindow::slotStartButtonClick()
         {
             std::random_device rd;  // 用于生成种子的随机数引擎，一般使用系统提供的硬件随机数生成器
             std::mt19937 gen(rd()); // 使用Mersenne Twister随机数引擎，随机数种子使用rd生成的
-
             std::uniform_int_distribution<> dis(0, wordList.size() - 1);
             int index = dis(gen);
             ui->showWordLabel->setText(wordList[index]);
             curString = wordList[index];
             wordList.removeAll(curString);
         }
-        // ui->startButton->setText(QString("暂停"));
+        ui->startButton->setText(QString("暂停"));
         mTimer->start(SECOND);
         curStatus = SHOWWORD;
     }
@@ -108,7 +97,7 @@ void gameWindow::slotTimerOut()
             if (ui->answerLine->text() == curString)
             {
                 ui->showWordLabel->setText(QString("回答正确"));
-                (father->cInformation)->addExperience(level * 10);
+                (father->cInformation)->addExperience(level * 10 + (answerTime - SHOWTIME) * 2);
                 father->printfChalenger();
                 // 进行奖励
             }
@@ -126,6 +115,16 @@ void gameWindow::slotTimerOut()
             resultTime = RESULTTIME;
             curStatus = SHOWWORD;
             remainRounds--;
+            if (remainRounds == 6)
+            {
+                wordList = wordLists[1];
+                ui->show_level->setText("level 2");
+            }
+            else if (remainRounds == 3)
+            {
+                wordList = wordLists[2];
+                ui->show_level->setText("level 3");
+            }
             if (0 == remainRounds)
             {
                 // 关闭界面进行结算
@@ -164,7 +163,7 @@ void gameWindow::slotConfirmButtonClick()
     if (ui->answerLine->text() == curString)
     {
         ui->showWordLabel->setText(QString("回答正确"));
-        (father->cInformation)->addExperience(level * 10);
+        (father->cInformation)->addExperience(level * 10 + (answerTime - SHOWTIME) * 2);
         father->printfChalenger();
         // 进行奖励
     }
