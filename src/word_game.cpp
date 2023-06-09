@@ -10,7 +10,8 @@ word_game::word_game(QWidget *parent)
     mGameWindow = new gameWindow(this, 1);
 
     mWordAddWindow = new wordAddWindow(this);
-    mLoginWindow->show();
+    mServer = new tcpServer(this);
+    mServer->show();
 
     connect(mLoginWindow, SIGNAL(loginSignal()), this, SLOT(show()));
     connect(mGameWindow, SIGNAL(gameOverSignal()), this, SLOT(slotTest()));

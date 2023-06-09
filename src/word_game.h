@@ -19,6 +19,8 @@
 #include "gameWindow.h"
 #include "loginWindow.h"
 #include "wordAddWindow.h"
+#include "tcpServer.h"
+class tcpServer;
 class loginWindow;
 class gameWindow;
 class wordAddWindow;
@@ -35,6 +37,7 @@ public:
     friend class gameWindow;
     friend class wordAddWindow;
     friend class listWindow;
+    friend class tcpServer;
 
 private:
     std::vector<Challenger> gameChallengers;
@@ -46,7 +49,7 @@ private:
     gameWindow *mGameWindow;
     loginWindow *mLoginWindow;
     wordAddWindow *mWordAddWindow;
-
+    class tcpServer *mServer;
     ParticipantKind me;
     Challenger *cInformation = NULL;
     Quizmaster *qInformation = NULL;

@@ -1,5 +1,6 @@
 QT += core gui widgets
 QT += core
+QT += network
 CONFIG += c++17
 
 win32-msvc*:QMAKE_CXXFLAGS += /utf-8
