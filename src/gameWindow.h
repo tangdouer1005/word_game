@@ -48,6 +48,7 @@ private:
     Status preStatus;
     int level;
 
+    int bad_count;
     QString curString;
     QList<QString> wordList;
     std::vector<QList<QString>> wordLists;

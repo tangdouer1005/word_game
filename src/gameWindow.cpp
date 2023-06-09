@@ -23,6 +23,7 @@ gameWindow::~gameWindow()
 }
 void gameWindow::slotStartButtonClick()
 {
+    bad_count = 0;
     wordLists = {father->wordLists[0].toList(), father->wordLists[1].toList(), father->wordLists[2].toList()};
     for (int i = 0; i < 3; i++)
     {
@@ -104,6 +105,7 @@ void gameWindow::slotTimerOut()
             else
             {
                 ui->showWordLabel->setText(QString("回答错误"));
+                bad_count++;
             }
             ui->answerLine->clear();
         }
@@ -124,6 +126,17 @@ void gameWindow::slotTimerOut()
             {
                 wordList = wordLists[2];
                 ui->show_level->setText("level 3");
+            }
+            if (bad_count == 4)
+            {
+                QMessageBox::information(this,
+                                         tr("闯关失败"),
+                                         tr("请重新开始"),
+                                         QMessageBox::Ok | QMessageBox::Cancel,
+                                         QMessageBox::Ok);
+                mTimer->stop();
+                this->close();
+                father->printfChalenger();
             }
             if (0 == remainRounds)
             {
@@ -170,6 +183,7 @@ void gameWindow::slotConfirmButtonClick()
     else
     {
         ui->showWordLabel->setText(QString("回答错误"));
+        bad_count++;
     }
 
     father->printfChalenger();
